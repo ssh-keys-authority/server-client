@@ -1,0 +1,31 @@
+project_name: server-client
+builds:
+  - binary: server-client
+    id: server-client
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 7
+
+release:
+  draft: false
+
+archives:
+  - id: "server-client"
+    builds: ['server-client']
+    format: tar.gz
+    name_template: "{{.ProjectName}}_{{.Version}}_{{.Os}}-{{.Arch}}"
+    replacements:
+      amd64: 64-bit
+      386: 32-bit
+      arm: ARM
+      arm64: ARM64
+      linux: Linux
+    files:
+      - README.md
+      - LICENSE.md
